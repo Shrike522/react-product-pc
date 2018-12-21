@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Home from './layout';
 
-export default class Home extends Component{
-    render(){
-        return (
-            <div>
-                Home
-            </div>
-        );
-    }
-}
+import { getName, getUser } from './action';
+
+const mapStateToState = (state) => {
+    const { ...props } = state.home;
+    return ({ ...props });
+};
+
+const mapReducerToState = {
+    getName, getUser
+};
+
+export default connect(mapStateToState, mapReducerToState)(Home);

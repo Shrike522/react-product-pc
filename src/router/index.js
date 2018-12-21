@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import BundleLoader from './bundleLoader';
 
+// 根据routes配置文件生成路由组件树(内部按需加载处理)
 const makeRouterTree = (routes) => {
     return routes.map((item) => {
         const { children, component, path } = item;
@@ -27,10 +28,11 @@ const makeRouterTree = (routes) => {
     });
 };
 
+// 路由配置文件
 const routes = [
     {
-        path: "/",
-        component: "Home",
+        path: "/", // 路由路径
+        component: "Home", // 文件路径( 'src/pages/${Path}' )
         exact: true
     },
     {

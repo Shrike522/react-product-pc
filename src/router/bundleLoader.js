@@ -1,5 +1,5 @@
 // bundle.js 用于按需加载
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 export default class Bundle extends Component{
     constructor (props) {
