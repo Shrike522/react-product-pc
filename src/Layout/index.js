@@ -12,22 +12,25 @@ class App extends Component{
 
     _handleResizeConfig = () => {
         const screenWid = resizeScreen();
-        const { setMain } = this.props;
-        if (screenWid <= 790) {
+        const { setMain, main } = this.props;
+        const { isMobile } = main;
+        if (screenWid <= 790 && !isMobile) {
             // mobile
             setMain({ isMobile: true });
-        } else {
+        }
+        if (screenWid > 790 && isMobile) {
+            // pc
             setMain({ isMobile: false });
         }
     };
 
     componentDidMount() {
         this._handleResizeConfig();
-        document.addEventListener("resize", this._handleResizeConfig);
+        window.addEventListener("resize", this._handleResizeConfig);
     }
 
     componentWillUnmount () {
-        document.removeEventListener("resize", this._handleResizeConfig);
+        window.removeEventListener("resize", this._handleResizeConfig);
     }
 
     render(){

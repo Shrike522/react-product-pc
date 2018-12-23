@@ -5,7 +5,7 @@ const saga = createSagaMiddleware();
 const middlewares = [];
 middlewares.push(saga);
 
-if(process.NODE_ENV === "development"){
+if(process.NODE_ENV !== "production"){
     const logger = createLogger();
     middlewares.push(logger);
 }
