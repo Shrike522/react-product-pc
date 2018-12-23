@@ -16,8 +16,8 @@ export const reducerGetUser = (state, action) => {
 };
 
 const handleReducers = {
-    GET_NAME: reducerGetName,
-    GET_USER: reducerGetUser
+    [GET_NAME]: reducerGetName,
+    [GET_USER]: reducerGetUser
 };
 
 const initState = {

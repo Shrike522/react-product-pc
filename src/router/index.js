@@ -2,18 +2,16 @@ import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import BundleLoader from './bundleLoader';
 
+import Home from '../pages/Home';
+import Detail from '../pages/Detail';
+import List from '../pages/List';
+import Login from '../pages/Login';
+import User from '../pages/User';
+
 // 根据routes配置文件生成路由组件树(内部按需加载处理)
 const makeRouterTree = (routes) => {
     return routes.map((item) => {
         const { children, component, path } = item;
-        if (children && Array.isArray(children) && children.length>0){
-            item.delete("children");
-            return (
-                <Route key={`RouteChildren-${path}`} {...item}>
-                    { makeRouterTree(children) }
-                </Route>
-            );
-        }
 
         // 按需加载
         item.component = (props) => (
@@ -21,6 +19,15 @@ const makeRouterTree = (routes) => {
                 {(Container) => <Container {...props} />}
             </BundleLoader>
         );
+
+        if (children && Array.isArray(children) && children.length>0){
+            delete item.children;
+            return (
+                <Route key={`RouteChildren-${path}`} {...item}>
+                    { makeRouterTree(children) }
+                </Route>
+            );
+        }
 
         return (
             <Route key={`Route-${path}`} {...item} />
@@ -57,9 +64,14 @@ const RouterTree = () => {
     return (
         <BrowserRouter>
             <div>
-                {
-                    makeRouterTree(routes)
-                }
+                {/*{*/}
+                    {/*makeRouterTree(routes)*/}
+                {/*}*/}
+                <Route component={Home} path={"/"} exact={true}/>
+                <Route component={Detail} path={"/Detail"}/>
+                <Route component={List} path={"/List"}/>
+                <Route component={Login} path={"/Login"}/>
+                <Route component={User} path={"/User"}/>
             </div>
         </BrowserRouter>
     );

@@ -15,6 +15,11 @@ export default class Home extends Component{
         getUser(e.target.value);
     };
 
+    componentWillMount () {
+        const { setMain } = this.props;
+        setMain({ documentTitle: "手机专卖网" });
+    }
+
     render () {
         const { name, user } = this.props;
         return (

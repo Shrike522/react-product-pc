@@ -1,0 +1,1 @@
+export const SET_MAIN = "SET_MAIN";
