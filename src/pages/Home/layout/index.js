@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.scss';
 
 export default class Home extends Component{
     constructor (props) {
@@ -23,7 +24,7 @@ export default class Home extends Component{
     render () {
         const { name, user } = this.props;
         return (
-            <div>
+            <div className={`home-layout`}>
                 <h1>Home</h1>
                 <div>
                     <input onChange={this._handleName} value={name} type="text"/>
