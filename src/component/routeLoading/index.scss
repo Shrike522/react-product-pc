@@ -1,0 +1,23 @@
+//----- 页面加载等待图标start -----//
+
+.loading-box {
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1000;
+
+  .loading-icon {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+  }
+
+}
+
+//----- 页面加载等待图标end -----//

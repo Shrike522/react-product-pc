@@ -5,6 +5,8 @@ import RouterTree from  '../router';
 import resizeScreen from '../utils/resizeScreen';
 import './index.scss';
 
+import LogoNav from '../component/logoNav';
+
 class App extends Component{
     constructor(props){
         super(props);
@@ -36,6 +38,7 @@ class App extends Component{
     render(){
         return (
             <div className={`app-layout`}>
+                <LogoNav/>
                 <RouterTree/>
             </div>
         );

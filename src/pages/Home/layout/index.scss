@@ -1,9 +1,10 @@
+@import '../../../style/layout.scss';
 //----- 首页整体布局样式start -----//
 
 .home-layout {
 
-  width: 100%;
   min-height: 100%;
+  @include layoutMaxWidth;
 
 }
 
