@@ -6,9 +6,12 @@
 .logo-nav-bg {
 
   width: 100%;
-  height: 40px;
-  line-height: 40px;
+  height: $logoNavHeight;
+  line-height: $logoNavHeight;
   background-color: $logoBgColor;
+  position: absolute;
+  top: 0;
+  left: 0;
 
 }
 
@@ -32,7 +35,7 @@
 .logo-nav-right {
 
   float: right;
-  height: 40px;
+  height: $logoNavHeight;
 
   .logo-nav-li {
     float: left;

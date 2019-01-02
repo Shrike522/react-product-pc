@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setMain } from './action';
+import { setMain, setUserStatus } from './action';
 import RouterTree from  '../router';
 import resizeScreen from '../utils/resizeScreen';
 import './index.scss';
@@ -26,7 +26,7 @@ class App extends Component{
         }
     };
 
-    componentDidMount() {
+    componentDidMount () {
         this._handleResizeConfig();
         window.addEventListener("resize", this._handleResizeConfig);
     }
@@ -36,9 +36,17 @@ class App extends Component{
     }
 
     render(){
+
+        const { logoNav } = this.props.main;
+
         return (
             <div className={`app-layout`}>
-                <LogoNav/>
+                {
+                    logoNav?
+                        <LogoNav/>
+                        :
+                        null
+                }
                 <RouterTree/>
             </div>
         );
@@ -52,7 +60,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionToProps = {
-    setMain
+    setMain, setUserStatus
 };
 
 export default connect(mapStateToProps, mapActionToProps)(App);

@@ -35,18 +35,22 @@ const routes = [
 
 // console.log(makeRouterTree(routes));
 
-const RouterTree = () => {
-    return (
-        <BrowserRouter>
-            <div className={`router-tree-box`}>
-                <Route component={Home} path={"/"} exact={true}/>
-                <Route component={List} path={"/List"}/>
-                <Route component={Detail} path={"/Detail"}/>
-                <Route component={Login} path={"/Login"}/>
-                <Route component={User} path={"/User"}/>
-            </div>
-        </BrowserRouter>
-    );
-};
+class RouterTree extends React.Component {
+
+    render () {
+        return (
+            <BrowserRouter>
+                <div className={`router-tree-box`}>
+                    <Route component={Home} path={"/"} exact={true}/>
+                    <Route component={List} path={"/List"}/>
+                    <Route component={Detail} path={"/Detail"}/>
+                    <Route component={Login} path={"/Login"}/>
+                    <Route component={User} path={"/User"}/>
+                </div>
+            </BrowserRouter>
+        );
+    }
+
+}
 
 export default RouterTree;

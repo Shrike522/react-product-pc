@@ -1,0 +1,9 @@
+export const SET_NAME = "SET_NAME";
+export const SET_PASSWORD = "SET_PASSWORD";
+export const SET_NEW_NAME = "SET_NEW_NAME";
+export const SET_NEW_PASSWORD = "SET_NEW_PASSWORD";
+export const SET_CONFIRM_DIRTY = "SET_CONFIRM_DIRTY";
+export const SET_CODE = "SET_CODE";
+export const GET_CODE = "GET_CODE";
+export const GET_TAB_PANE = "GET_TAB_PANE";
+export const SET_USERS = "SET_USERS";

@@ -1,8 +1,13 @@
+@import '../style/layout';
+
 //----- app外层布局start -----//
 
 .app-layout{
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: $logoNavHeight;
 }
 
 //----- app外层布局end -----//
