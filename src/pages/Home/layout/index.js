@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './index.scss';
 
+import ProductList from '../component/ProductList';
+
 export default class Home extends Component{
     constructor (props) {
         super(props);
@@ -31,6 +33,7 @@ export default class Home extends Component{
                     <br/>
                     <input onChange={this._handleUser} value={user} type="text"/>
                 </div>
+                <ProductList/>
             </div>
         );
     }
