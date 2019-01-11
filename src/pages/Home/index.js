@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Home from './layout';
 
-import { getName, getUser } from './action';
+import { setKeywords } from './action';
 import { setMain } from '../../Layout/action';
 
 const mapStateToProps = (state) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionToProps = {
-    getName, getUser, setMain
+    setKeywords, setMain
 };
 
 export default connect(mapStateToProps, mapActionToProps)(Home);

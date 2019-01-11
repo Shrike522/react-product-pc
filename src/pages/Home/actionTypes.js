@@ -1,2 +1,1 @@
-export const GET_NAME = "GET_NAME";
-export const GET_USER = "GET_USER";
+export const SET_KEY_WORDS = "SET_KEY_WORDS";

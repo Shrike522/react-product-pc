@@ -2,21 +2,12 @@ import React, { Component } from 'react';
 import './index.scss';
 
 import ProductList from '../component/ProductList';
+import SearchTab from '../component/SearchTab';
 
 export default class Home extends Component{
     constructor (props) {
         super(props);
     }
-
-    _handleName = (e) => {
-        const { getName } = this.props;
-        getName(e.target.value);
-    };
-
-    _handleUser = (e) => {
-        const { getUser } = this.props;
-        getUser(e.target.value);
-    };
 
     componentWillMount () {
         const { setMain } = this.props;
@@ -24,16 +15,18 @@ export default class Home extends Component{
     }
 
     render () {
-        const { name, user } = this.props;
+        const { productList, keywords, setKeywords, searchList } = this.props;
         return (
             <div className={`home-layout`}>
-                <h1>Home</h1>
-                <div>
-                    <input onChange={this._handleName} value={name} type="text"/>
-                    <br/>
-                    <input onChange={this._handleUser} value={user} type="text"/>
-                </div>
-                <ProductList/>
+                <SearchTab
+                    productList={productList}
+                    searchList={searchList}
+                    keywords={keywords}
+                    setKeywords={setKeywords}
+                />
+                <ProductList
+                    productList={productList}
+                />
             </div>
         );
     }

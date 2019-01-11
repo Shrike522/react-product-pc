@@ -1,0 +1,81 @@
+@import '../../../style/colors';
+//----- 列表检索控件start -----//
+
+$borderColor: #eeeeee;
+$fontColor: cornflowerblue;
+
+//----- 外层start -----//
+
+.search-tab {
+
+  width: 100%;
+  border: 1px solid $borderColor;
+
+}
+
+//----- 外层start -----//
+
+//----- 行检索列表start -----//
+
+.search-tab-list {
+  font-size: 14px;
+  color: $fontColor;
+  min-height: 36px;
+  line-height: 36px;
+  border-bottom: 1px dashed $borderColor;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .search-tab-list-title {
+    float: left;
+    min-width: 10%;
+    text-align: center;
+    border-right: 1px solid $borderColor;
+  }
+
+  .search-tab-list-second-title, .search-tab-list-second-border {
+    float: left;
+    margin-right: 5px;
+  }
+
+  .search-tab-list-second-border {
+    cursor: default;
+  }
+
+  .search-tab-list-item, .search-tab-list-item-second {
+    float: left;
+    margin: 0 5px;
+  }
+
+  .search-tab-list-item-btn, .search-tab-list-second-title {
+    line-height: 16px;
+    &:hover {
+      color: $activeColor;
+    }
+  }
+
+  .search-tab-list-second-title {
+    margin-top: 10px;
+  }
+
+  .search-tab-pane-active {
+    color: white;
+    background-color: $activeColor;
+    &:hover {
+      color: white;
+    }
+  }
+
+  .search-tab-pane-disable {
+    color: #999999;
+    &:hover {
+      color: #999999;
+    }
+  }
+
+}
+
+//----- 行检索列表end -----//
+
+//----- 列表检索控件end -----//

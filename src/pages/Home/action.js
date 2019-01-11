@@ -1,18 +1,12 @@
 // actionTypes
-import { GET_NAME, GET_USER } from './actionTypes';
+import { SET_KEY_WORDS } from './actionTypes';
 
 
 // syncAction
-export const getName = (data) => {
-    return ({
-        type: GET_NAME,
-        payload: data
-    });
-};
 
-export const getUser = (data) => {
+export const setKeywords = (data) => {
     return ({
-        type: GET_USER,
+        type: SET_KEY_WORDS,
         payload: data
     });
 };

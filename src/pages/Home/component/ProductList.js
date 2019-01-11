@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 import './ProductList.scss';
 
-import tempImg from '../../../assets/imgs/ceCiQbqOqNhfg.jpg';
-
 class ListItem extends Component{
     constructor (props) {
         super(props);
@@ -43,43 +41,21 @@ export default class ProductList extends Component{
     }
 
     render () {
+        const { productList } = this.props;
         return (
             <ul className={`product-list clearfix`}>
-                <WrapRouterListItem
-                    productId={1}
-                    img={tempImg}
-                    title={"华硕显卡"}
-                    price={"12000"}
-                    score={"10"}
-                />
-                <WrapRouterListItem
-                    productId={1}
-                    img={tempImg}
-                    title={"华硕显卡"}
-                    price={"12000"}
-                    score={"10"}
-                />
-                <WrapRouterListItem
-                    productId={1}
-                    img={tempImg}
-                    title={"华硕显卡"}
-                    price={"12000"}
-                    score={"10"}
-                />
-                <WrapRouterListItem
-                    productId={1}
-                    img={tempImg}
-                    title={"华硕显卡"}
-                    price={"12000"}
-                    score={"10"}
-                />
-                <WrapRouterListItem
-                    productId={1}
-                    img={tempImg}
-                    title={"华硕显卡"}
-                    price={"12000"}
-                    score={"10"}
-                />
+                {
+                    productList.map((item)=>(
+                        <WrapRouterListItem
+                            productId={item.id}
+                            img={item.img[0]}
+                            title={item.name}
+                            price={item.price}
+                            score={`${item.score}`}
+                            key={`product-${item.id}`}
+                        />
+                    ))
+                }
             </ul>
         );
     }
