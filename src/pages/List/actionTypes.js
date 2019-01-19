@@ -1,2 +1,4 @@
-export const GET_NAME = "GET_NAME";
-export const GET_USER = "GET_USER";
+export const ADD_MARKET = "ADD_MARKET";
+export const SUB_MARKET = "SUB_MARKET";
+export const DEL_MARKET = "DEL_MARKET";
+export const SET_MARKET_NUM = "SET_MARKET_NUM";

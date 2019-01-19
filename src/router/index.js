@@ -43,7 +43,7 @@ class RouterTree extends React.Component {
                 <div className={`router-tree-box`}>
                     <Route component={Home} path={"/"} exact={true}/>
                     <Route component={List} path={"/List"}/>
-                    <Route component={Detail} path={"/Detail"}/>
+                    <Route component={Detail} path={"/Detail/:id"}/>
                     <Route component={Login} path={"/Login"}/>
                     <Route component={User} path={"/User"}/>
                 </div>
