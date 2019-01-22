@@ -1,0 +1,129 @@
+@import '../../../style/layout.scss';
+@import '../../../style/colors';
+//----- 购物车列表start -----//
+
+.list-layout {
+
+  min-height: 100%;
+  @include layoutMaxWidth;
+
+}
+
+.list-title {
+
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.list-ul {
+
+  margin: 10px 0 0;
+  padding: 20px 0;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+
+  //----- 购物车商品start -----//
+
+  .list-item {
+
+    box-sizing: border-box;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: 1px solid #eee;
+    }
+
+  }
+
+  .list-item-img {
+
+    float: left;
+    width: 20%;
+    cursor: pointer;
+
+  }
+
+  .list-item-info {
+
+    float: left;
+    width: 60%;
+    box-sizing: border-box;
+    padding: 20px;
+
+  }
+
+  .list-item-info-title {
+
+    font-size: 16px;
+    margin-bottom: 10px;
+
+  }
+
+  .list-item-info-content {
+
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+
+  }
+
+  .list-item-info-num {
+
+    line-height: 18px;
+    margin-top: 10px;
+
+  }
+
+  .list-item-info-num-btn {
+
+    float: left;
+    width: 20px;
+    height: 24px;
+    border: 1px solid #999;
+
+  }
+
+  .list-item-info-num-input {
+
+    float: left;
+    width: 30px;
+    height: 24px;
+    text-align: center;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+
+  }
+
+  .list-item-active {
+
+    float: right;
+    width: 20%;
+
+  }
+
+  .list-item-active-btn {
+
+    display: block;
+    width: 40%;
+    height: 28px;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 20px auto 0;
+    border: 1px solid $activeColor;
+    color: $activeColor;
+
+    &:hover {
+      color: #fff;
+      background-color: $activeColor;
+    }
+
+  }
+
+  //----- 购物车商品start -----//
+
+}
+
+//----- 购物车列表end -----//

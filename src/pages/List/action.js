@@ -4,13 +4,6 @@ import { ADD_MARKET, SUB_MARKET, DEL_MARKET, SET_MARKET_NUM } from './actionType
 
 // syncAction
 
-export const pushMarket = (data) => {
-    return ({
-        type: PUSH_MARKET,
-        payload: data
-    });
-};
-
 export const addMarket = (data) => {
     return ({
         type: ADD_MARKET,

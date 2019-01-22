@@ -33,6 +33,7 @@ class App extends Component{
 
     componentWillUnmount () {
         window.removeEventListener("resize", this._handleResizeConfig);
+        window.sessionStorage.removeItem("marketList");
     }
 
     render(){

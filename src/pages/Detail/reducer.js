@@ -1,5 +1,5 @@
 import { GET_PRODUCT, SET_PRODUCT_NUM } from './actionTypes';
-const numReg = /\d*/;
+const numReg = /^\d*$/;
 // reducer
 
 export const reducerGetProduct = (state, action) => {

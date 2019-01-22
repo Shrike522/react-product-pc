@@ -1,6 +1,6 @@
 import { ADD_MARKET, SUB_MARKET, DEL_MARKET, SET_MARKET_NUM } from './actionTypes';
 
-const numReg = /\d*/;
+const numReg = /^\d*$/;
 
 // reducer
 export const reducerAddMarket = (state, action) => {
@@ -21,11 +21,12 @@ export const reducerAddMarket = (state, action) => {
         if (payload.hasOwnProperty("id") && numReg.test(payload.id)) {
             productId = payload.id;
         }
+        if (Array.isArray(payload)) marketList = [ ...marketList, ...payload ];
     }
     if ((typeof payload === "string" || typeof payload === "number") && numReg.test(payload)) {
         productId = payload;
     }
-    if (productId !== "undefined") {
+    if (productId !== undefined) {
         const foundIndex = marketList.findIndex((item) => {
             return item.product.id === productId;
         });
@@ -34,6 +35,7 @@ export const reducerAddMarket = (state, action) => {
         if (productNum < 1) productNum = 1;
         marketList[foundIndex].productNum = productNum;
     }
+    window.sessionStorage.setItem("marketList", JSON.stringify(marketList));
     return ({
         ...state,
         marketList,
@@ -71,8 +73,7 @@ export const reducerSetMarketNum = (state, action) => {
         const foundIndex = marketList.findIndex((item) => {
             return item.product.id === action.payload.id;
         });
-        let productNum = parseInt(marketList[foundIndex].productNum);
-        productNum += parseInt(action.payload.productNum);
+        let productNum = parseInt(action.payload.productNum);
         if (productNum < 1) productNum = 1;
         if (productNum > 100) productNum = 100;
         marketList[foundIndex].productNum = productNum;
