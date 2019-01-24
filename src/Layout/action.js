@@ -19,8 +19,8 @@ export const setUserStatus = (data) => {
     const payload = {
         userName: data.userName,
         password: data.password,
-        isLogin: true,
-        token: makeRandomStr(12)
+        isLogin: typeof data.isLogin === "boolean" ? data.isLogin : true,
+        token: data.token || makeRandomStr(12)
     };
     return ({
         type: SET_USER_STATUS,

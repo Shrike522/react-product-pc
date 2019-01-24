@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './index.scss';
 
-export default class LogoNav extends Component {
+class LogoNav extends Component {
 
     constructor (props) {
         super(props);
     }
 
+    handleClickLinkMarket = () => {
+        this.props.history.push("/List");
+    };
+
+    handleClickLinkSignUp = () => {
+        this.props.history.push("/Login");
+    };
+
+    handleClickLinkSignOut = () => {
+        this.props.setUserStatus({ userName: "", password: "", isLogin: false });
+        window.sessionStorage.removeItem("userStatus");
+    };
+
     render () {
+        const { marketList, userStatus } = this.props;
         return (
             <div className={`logo-nav-bg`}>
                 <div className={`logo-nav clearfix`}>
@@ -16,12 +31,28 @@ export default class LogoNav extends Component {
                     </div>
                     <ul className={`logo-nav-right clearfix`}>
                         <li className={`logo-nav-li`}>
-                            <button className={`logo-nav-li-btn`}>您好 请登录</button>
+                            <button onClick={userStatus.isLogin ? null : this.handleClickLinkSignUp} className={`logo-nav-li-btn`}>
+                                {
+                                    userStatus.isLogin ?
+                                        `欢迎您! ${userStatus.userName}`
+                                        :
+                                        `您好! 请登录`
+                                }
+                            </button>
                             <button className={`logo-nav-li-btn btn-active`}>免费注册</button>
                         </li>
                         <li className={`logo-nav-li`}>
-                            <button className={`logo-nav-li-btn`}>相关说明</button>
+                            <button onClick={this.handleClickLinkMarket} className={`logo-nav-li-btn`}>购物车({ marketList.length })</button>
+                            {/*购物车 - { marketList.length }*/}
                         </li>
+                        {
+                            userStatus.isLogin ?
+                                <li className={`logo-nav-li`}>
+                                    <button onClick={this.handleClickLinkSignOut} className={`logo-nav-li-btn`}>退出登录</button>
+                                </li>
+                                :
+                                null
+                        }
                     </ul>
                 </div>
             </div>
@@ -29,3 +60,5 @@ export default class LogoNav extends Component {
     }
 
 }
+
+export default withRouter(LogoNav);

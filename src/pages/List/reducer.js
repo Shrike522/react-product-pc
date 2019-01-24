@@ -2,6 +2,10 @@ import { ADD_MARKET, SUB_MARKET, DEL_MARKET, SET_MARKET_NUM } from './actionType
 
 const numReg = /^\d*$/;
 
+const setSessionStorage = ({ key, value }) => {
+    window.sessionStorage.setItem(key, JSON.stringify(value));
+};
+
 // reducer
 export const reducerAddMarket = (state, action) => {
     let { marketList } = state, { payload } = action, productId, productNum = 1;
@@ -35,7 +39,7 @@ export const reducerAddMarket = (state, action) => {
         if (productNum < 1) productNum = 1;
         marketList[foundIndex].productNum = productNum;
     }
-    window.sessionStorage.setItem("marketList", JSON.stringify(marketList));
+    setSessionStorage({ key: "marketList", value: marketList });
     return ({
         ...state,
         marketList,
@@ -49,6 +53,7 @@ export const reducerSubMarket = (state, action) => {
     });
     let productNum = parseInt(marketList[foundIndex].productNum);
     if (productNum > 1) marketList[foundIndex].productNum -= 1;
+    setSessionStorage({ key: "marketList", value: marketList });
     return ({
         ...state,
         marketList
@@ -61,6 +66,7 @@ export const reducerDelMarket = (state, action) => {
         return item.product.id === action.payload;
     });
     if (foundIndex > -1) marketList.splice(foundIndex, 1);
+    setSessionStorage({ key: "marketList", value: marketList });
     return ({
         ...state,
         marketList
@@ -78,6 +84,7 @@ export const reducerSetMarketNum = (state, action) => {
         if (productNum > 100) productNum = 100;
         marketList[foundIndex].productNum = productNum;
     }
+    setSessionStorage({ key: "marketList", value: marketList });
     return ({
         ...state,
         marketList

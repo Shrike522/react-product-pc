@@ -9,12 +9,11 @@ const reducerSetMain = (state, action) => {
 };
 
 const reducerSetUserStatus = (state, action) => {
+    const userStatus = { ...state.userStatus, ...action.payload };
+    window.sessionStorage.setItem("userStatus", JSON.stringify(userStatus));
     return ({
         ...state,
-        userStatus: {
-            ...state.userStatus,
-            ...action.payload
-        }
+        userStatus
     });
 };
 

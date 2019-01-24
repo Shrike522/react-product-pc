@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './index.scss';
+import {setUserStatus} from "../../../Layout/action";
 
 const numReg = /^\d$/;
 
@@ -40,17 +41,25 @@ class List extends Component{
     };
 
     componentDidMount () {
-        const { marketList } = this.props;
+        const { marketList, main, setUserStatus } = this.props, { userStatus } = main;
         let sessionMarketList = window.sessionStorage.getItem("marketList");
         if (sessionMarketList && marketList.length === 0) {
             sessionMarketList = JSON.parse(sessionMarketList);
             if (Array.isArray(sessionMarketList) && sessionMarketList.length>0) this.props.addMarket(sessionMarketList);
         }
+
+        let sessionStorageUserStatus = window.sessionStorage.getItem("userStatus");
+        if (sessionStorageUserStatus) {
+            sessionStorageUserStatus = JSON.parse(sessionStorageUserStatus);
+            if ((!userStatus || !userStatus.isLogin) && sessionStorageUserStatus.isLogin) {
+                setUserStatus(sessionStorageUserStatus);
+            }
+        }
     }
 
     render () {
 
-        const { marketList } = this.props;
+        const { marketList, main } = this.props, { userStatus } = main;
 
         return (
             <div className={`list-layout`}>
@@ -74,7 +83,7 @@ class List extends Component{
                                         </div>
                                     </div>
                                     <div className={`list-item-active`}>
-                                        <button onClick={() => this.handleDeleteMarket(product.id)} className={`list-item-active-btn`}>结算</button>
+                                        <button onClick={userStatus.isLogin ? () => this.handleDeleteMarket(product.id) : null} className={`list-item-active-btn`}>{userStatus.isLogin ? "结算" : "登录后结算"}</button>
                                         <button onClick={() => this.handleDeleteMarket(product.id)} className={`list-item-active-btn`}>删除</button>
                                     </div>
                                 </li>

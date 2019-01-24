@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
+import LogoNav from '../component/logoNav';
 import './index.scss';
 
 import Home from '../pages/Home/route';
@@ -38,14 +39,27 @@ const routes = [
 class RouterTree extends React.Component {
 
     render () {
+        const { logoNav, userStatus, marketList, setUserStatus } = this.props;
         return (
             <BrowserRouter>
                 <div className={`router-tree-box`}>
-                    <Route component={Home} path={"/"} exact={true}/>
-                    <Route component={List} path={"/List"}/>
-                    <Route component={Detail} path={"/Detail/:id"}/>
                     <Route component={Login} path={"/Login"}/>
                     <Route component={User} path={"/User"}/>
+                    <div>
+                        {
+                            logoNav ?
+                                <LogoNav
+                                    userStatus={userStatus}
+                                    marketList={marketList}
+                                    setUserStatus={setUserStatus}
+                                />
+                                :
+                                null
+                        }
+                        <Route component={Home} path={"/"} exact={true}/>
+                        <Route component={List} path={"/List"}/>
+                        <Route component={Detail} path={"/Detail/:id"}/>
+                    </div>
                 </div>
             </BrowserRouter>
         );

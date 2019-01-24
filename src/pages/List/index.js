@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import List from './layout';
 
 import { addMarket, subMarket, delMarket, setMarketNum } from './action';
-import { setMain } from '../../Layout/action';
+import { setMain, setUserStatus } from '../../Layout/action';
 
 const mapStateToProps = (state) => {
     const { ...props } = state.list, { productRootList } = state.home;
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionToProps = {
-    addMarket, subMarket, delMarket, setMarketNum, setMain
+    addMarket, subMarket, delMarket, setMarketNum, setMain, setUserStatus
 };
 
 export default connect(mapStateToProps, mapActionToProps)(List);

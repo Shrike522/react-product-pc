@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setMain, setUserStatus } from './action';
+import { addMarket } from '../pages/List/action';
 import RouterTree from  '../router';
 import resizeScreen from '../utils/resizeScreen';
 import './index.scss';
@@ -29,26 +30,41 @@ class App extends Component{
     componentDidMount () {
         this._handleResizeConfig();
         window.addEventListener("resize", this._handleResizeConfig);
+
+        const { marketList, main, setUserStatus, addMarket } = this.props, { userStatus } = main;
+        let sessionMarketList = window.sessionStorage.getItem("marketList");
+        if (sessionMarketList && marketList.length === 0) {
+            sessionMarketList = JSON.parse(sessionMarketList);
+            if (Array.isArray(sessionMarketList) && sessionMarketList.length>0) addMarket(sessionMarketList);
+        }
+
+        let sessionStorageUserStatus = window.sessionStorage.getItem("userStatus");
+        if (sessionStorageUserStatus) {
+            sessionStorageUserStatus = JSON.parse(sessionStorageUserStatus);
+            if ((!userStatus || !userStatus.isLogin) && sessionStorageUserStatus.isLogin) {
+                setUserStatus(sessionStorageUserStatus);
+            }
+        }
     }
 
     componentWillUnmount () {
         window.removeEventListener("resize", this._handleResizeConfig);
         window.sessionStorage.removeItem("marketList");
+        window.sessionStorage.removeItem("userStatus");
     }
 
     render(){
 
-        const { logoNav } = this.props.main;
+        const { logoNav, userStatus } = this.props.main, { marketList, setUserStatus } = this.props;
 
         return (
             <div className={`app-layout`}>
-                {
-                    logoNav?
-                        <LogoNav/>
-                        :
-                        null
-                }
-                <RouterTree/>
+                <RouterTree
+                    logoNav={logoNav}
+                    userStatus={userStatus}
+                    marketList={marketList}
+                    setUserStatus={setUserStatus}
+                />
             </div>
         );
     }
@@ -56,12 +72,13 @@ class App extends Component{
 
 const mapStateToProps = (state) => {
     return ({
-        main: { ...state.main }
+        main: { ...state.main },
+        marketList: state.list.marketList
     });
 };
 
 const mapActionToProps = {
-    setMain, setUserStatus
+    setMain, setUserStatus, addMarket
 };
 
 export default connect(mapStateToProps, mapActionToProps)(App);

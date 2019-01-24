@@ -4,7 +4,6 @@ import './SignIn.scss';
 import {
     Form, Icon, Input, Button, Checkbox, Row, Col
 } from 'antd';
-import {setUserStatus} from "../../../Layout/action";
 
 const Item = Form.Item;
 
