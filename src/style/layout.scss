@@ -15,6 +15,11 @@ $layoutMinWidth: 990px;
   @media screen and (max-width: 1610px) {
     max-width: 990px;
   }
+
+  @media screen and (max-width: 700px) {
+    max-width: 100%;
+  }
+
 }
 
 //----- logoNav start -----//
