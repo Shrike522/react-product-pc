@@ -12,6 +12,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  box-sizing: border-box;
 
 }
 
@@ -21,51 +22,108 @@
 
 }
 
-.logo-nav-left {
+@media screen and (min-width: 700px) {
 
-  float: left;
+  .logo-nav-left {
 
-  .logo-nav-title {
-    font-size: 16px;
-  }
-
-}
-
-//----- 右侧导航start -----//
-.logo-nav-right {
-
-  float: right;
-  height: $logoNavHeight;
-
-  .logo-nav-li {
     float: left;
-    height: 16px;
-    line-height: 14px;
-    margin-top: 12px;
-    padding: 0 10px;
-    border-right: 1px solid #999999;
 
-    &:last-child {
-      border-right: 0;
+    .logo-nav-title {
+      font-size: 16px;
     }
 
   }
 
-  .logo-nav-li-btn {
-    font-size: 12px;
+  //----- 右侧导航start -----//
+  .logo-nav-right {
 
-    &:hover {
+    float: right;
+    height: $logoNavHeight;
+
+    .logo-nav-li {
+      float: left;
+      height: 16px;
+      line-height: 14px;
+      margin-top: 12px;
+      padding: 0 10px;
+      border-right: 1px solid #999999;
+
+      &:last-child {
+        border-right: 0;
+      }
+
+    }
+
+    .logo-nav-li-btn {
+      font-size: 12px;
+
+      &:hover {
+        color: $logoBtnActiveColor;
+      }
+
+    }
+
+    .btn-active {
       color: $logoBtnActiveColor;
+      margin-left: 5px;
     }
 
   }
-
-  .btn-active {
-    color: $logoBtnActiveColor;
-    margin-left: 5px;
-  }
+  //----- 右侧导航end -----//
 
 }
-//----- 右侧导航end -----//
+
 
 //----- logo end -----//
+
+
+//----- mobile start -----//
+
+@media screen and (max-width: 701px) {
+
+  .logo-nav-left {
+
+    display: none;
+
+  }
+
+  //----- 右侧导航start -----//
+  .logo-nav-right {
+
+    width: 100%;
+    height: $logoNavHeight;
+
+    .logo-nav-li {
+      float: left;
+      height: 16px;
+      line-height: 14px;
+      margin-top: 12px;
+      padding: 0 10px;
+
+      &:last-child {
+        float: right;
+        border-right: 0;
+      }
+
+    }
+
+    .logo-nav-li-btn {
+      font-size: 14px;
+
+      &:active {
+        color: $logoBtnActiveColor;
+      }
+
+    }
+
+    .btn-active {
+      color: $logoBtnActiveColor;
+      margin-left: 5px;
+    }
+
+  }
+  //----- 右侧导航end -----//
+
+}
+
+//----- mobile end -----//

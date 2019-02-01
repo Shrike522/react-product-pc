@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import './SearchTab.scss';
 
-class SearchTabPane extends Component {
+class SearchTabPane extends PureComponent {
     render () {
         const { isActive, disable, content, handleClick } = this.props;
         return (
@@ -103,13 +103,15 @@ const makeSearchTabEle = (tabList) => {
             return (
                 <dl className={`search-tab-list clearfix`} key={i}>
                     <dt className={`search-tab-list-title`}>{title}</dt>
-                    <SearchTabPane
-                        isActive={false}
-                        disable={false}
-                        content={`不限`}
-                        handleClick={() => setKeywords({ [item]:null })}
-                    />
-                    {ele}
+                    <div className={`search-tab-list-content-box clearfix`}>
+                        <SearchTabPane
+                            isActive={false}
+                            disable={false}
+                            content={`不限`}
+                            handleClick={() => setKeywords({ [item]:null })}
+                        />
+                        {ele}
+                    </div>
                 </dl>
             );
         });

@@ -1,9 +1,52 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import './index.scss';
-import {setUserStatus} from "../../../Layout/action";
 
 const numReg = /^\d$/;
+
+
+class MarketListItem extends PureComponent {
+
+    render () {
+        const { id,
+            img,
+            name,
+            GPU,
+            brand,
+            memoryType,
+            memorySize,
+            productNum,
+            isLogin,
+            handleClickToDetail,
+            handleClickChangeMarket,
+            handleDeleteMarket,
+            handleInputMarket
+        } = this.props;
+        return (
+            <li className={`list-item clearfix`}>
+                <div className={`list-item-img-box`}>
+                    <img onClick={() => handleClickToDetail(id)} className={`list-item-img`} src={img} alt={`购物车商品`} />
+                </div>
+                <div className={`list-item-info`}>
+                    <h3 className={`list-item-info-title`}>{name}</h3>
+                    <p className={`list-item-info-content`}>型号: <span>{GPU}</span></p>
+                    <p className={`list-item-info-content`}>品牌: <span>{brand}</span></p>
+                    <p className={`list-item-info-content`}>内存: <span>{memoryType + " " + memorySize}</span></p>
+                    <div className={`list-item-info-num clearfix`}>
+                        <button onClick={() => handleClickChangeMarket("sub", id)} className={`list-item-info-num-btn`}>-</button>
+                        <input className={`list-item-info-num-input`} type="number" min={1} max={100} value={productNum} onChange={(e) => handleInputMarket(e, id)} />
+                        <button onClick={() => handleClickChangeMarket("add", id)} className={`list-item-info-num-btn`}>+</button>
+                    </div>
+                </div>
+                <div className={`list-item-active`}>
+                    <button onClick={isLogin ? () => handleDeleteMarket(id) : null} className={`list-item-active-btn`}>{isLogin ? "结算" : "登录后结算"}</button>
+                    <button onClick={() => handleDeleteMarket(id)} className={`list-item-active-btn`}>删除</button>
+                </div>
+            </li>
+        );
+    }
+
+}
 
 class List extends Component{
 
@@ -69,24 +112,22 @@ class List extends Component{
                         marketList.map((item) => {
                             const { product, productNum } = item;
                             return (
-                                <li className={`list-item clearfix`} key={`market-${product.id}`}>
-                                    <img onClick={() => this.handleClickToDetail(product.id)} className={`list-item-img`} src={product.img[0]} alt={`购物车商品`} />
-                                    <div className={`list-item-info`}>
-                                        <h3 className={`list-item-info-title`}>{product.name}</h3>
-                                        <p className={`list-item-info-content`}>型号: <span>{product.GPU}</span></p>
-                                        <p className={`list-item-info-content`}>品牌: <span>{product.brand}</span></p>
-                                        <p className={`list-item-info-content`}>内存: <span>{product.memoryType + " " + product.memorySize}</span></p>
-                                        <div className={`list-item-info-num clearfix`}>
-                                            <button onClick={() => this.handleClickChangeMarket("sub", product.id)} className={`list-item-info-num-btn`}>-</button>
-                                            <input className={`list-item-info-num-input`} type="number" min={1} max={100} value={productNum} onChange={(e) => this.handleInputMarket(e, product.id)} />
-                                            <button onClick={() => this.handleClickChangeMarket("add", product.id)} className={`list-item-info-num-btn`}>+</button>
-                                        </div>
-                                    </div>
-                                    <div className={`list-item-active`}>
-                                        <button onClick={userStatus.isLogin ? () => this.handleDeleteMarket(product.id) : null} className={`list-item-active-btn`}>{userStatus.isLogin ? "结算" : "登录后结算"}</button>
-                                        <button onClick={() => this.handleDeleteMarket(product.id)} className={`list-item-active-btn`}>删除</button>
-                                    </div>
-                                </li>
+                                <MarketListItem
+                                    key={`market-${product.id}`}
+                                    id={product.id}
+                                    img={product.img[0]}
+                                    name={product.name}
+                                    GPU={product.GPU}
+                                    brand={product.brand}
+                                    memoryType={product.memoryType}
+                                    memorySize={product.memorySize}
+                                    productNum={productNum}
+                                    isLogin={userStatus.isLogin}
+                                    handleClickToDetail={this.handleClickToDetail}
+                                    handleClickChangeMarket={this.handleClickChangeMarket}
+                                    handleDeleteMarket={this.handleDeleteMarket}
+                                    handleInputMarket={this.handleInputMarket}
+                                />
                             );
                         })
                     }

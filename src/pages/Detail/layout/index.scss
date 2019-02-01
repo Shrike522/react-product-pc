@@ -1,86 +1,184 @@
 @import '../../../style/layout.scss';
 @import '../../../style/colors';
+
+
+
 //----- 详情页start -----//
 
 .detail-layout {
 
   min-height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 50px;
   @include layoutMaxWidth;
 
 }
 
-.detail-img {
+@media screen and (min-width: 700px) {
 
-  float: left;
+  .detail-img {
 
-}
-
-.detail-content {
-
-  float: left;
-  padding: 24px 50px 0;
-  box-sizing: border-box;
-
-  .detail-content-title {
-    font-size: 18px;
-    line-height: 26px;
-    padding: 10px 0;
-  }
-
-  .detail-content-group {
-    padding: 6px 0;
-    line-height: 20px;
-  }
-
-  .detail-content-tag {
-    margin-right: 10px;
-  }
-
-  .num-tag {
     float: left;
+
   }
 
-  .detail-content-price {
-    font-size: 18px;
-    color: $activeColor;
-  }
+  .detail-content {
 
-  .detail-content-num-btn {
     float: left;
+    padding: 24px 50px 0;
     box-sizing: border-box;
-    border: 1px solid #eee;
-    width: 30px;
-    height: 30px;
 
-    &:hover {
-      border: 1px solid #999999;
+    .detail-content-title {
+      font-size: 18px;
+      line-height: 26px;
+      padding: 10px 0;
+    }
+
+    .detail-content-group {
+      padding: 6px 0;
+      line-height: 20px;
+    }
+
+    .detail-content-tag {
+      margin-right: 10px;
+    }
+
+    .num-tag {
+      float: left;
+    }
+
+    .detail-content-price {
+      font-size: 18px;
+      color: $activeColor;
+    }
+
+    .detail-content-num-btn {
+      float: left;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      width: 30px;
+      height: 30px;
+
+      &:hover {
+        border: 1px solid #999999;
+      }
+
+    }
+
+    .detail-content-num-input {
+      float: left;
+      width: 40px;
+      height: 30px;
+      text-align: center;
+      box-sizing: border-box;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    .detail-content-market-btn {
+      padding: 10px;
+      color: $activeColor;
+      border: 1px solid $activeColor;
+      margin-top: 20px;
+
+      &:hover {
+        color: #fff;
+        background-color: $activeColor;
+      }
+
     }
 
   }
 
-  .detail-content-num-input {
-    float: left;
-    width: 40px;
-    height: 30px;
-    text-align: center;
-    box-sizing: border-box;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-  }
-
-  .detail-content-market-btn {
-    padding: 10px;
-    color: $activeColor;
-    border: 1px solid $activeColor;
-    margin-top: 20px;
-
-    &:hover {
-      color: #fff;
-      background-color: $activeColor;
-    }
-
-  }
-
 }
+
 
 //----- 详情页end -----//
+
+
+
+//----- mobile start -----//
+
+@media screen and (max-width: 701px) {
+
+  .detail-img {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+
+  .detail-content {
+
+    padding: 24px 20px 0;
+    box-sizing: border-box;
+
+    .detail-content-title {
+      font-size: 22px;
+      line-height: 26px;
+      padding: 20px 0;
+    }
+
+    .detail-content-group {
+      padding: 10px 0;
+      line-height: 20px;
+    }
+
+    .detail-content-tag {
+      margin-right: 20px;
+      font-size: 18px;
+    }
+
+    .num-tag {
+      float: left;
+    }
+
+    .detail-content-price {
+      font-size: 26px;
+      color: $activeColor;
+    }
+
+    .detail-content-num-btn {
+      float: left;
+      box-sizing: border-box;
+      border: 1px solid #eee;
+      width: 50px;
+      height: 50px;
+
+      &:active {
+        border: 1px solid #999999;
+      }
+
+    }
+
+    .detail-content-num-input {
+      float: left;
+      width: 70px;
+      height: 50px;
+      text-align: center;
+      box-sizing: border-box;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    .detail-content-market-btn {
+      padding: 10px;
+      height: 50px;
+      color: $activeColor;
+      border: 1px solid $activeColor;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      &:active {
+        color: #fff;
+        background-color: $activeColor;
+      }
+
+    }
+
+  }
+
+}
+
+//----- mobile end -----//
